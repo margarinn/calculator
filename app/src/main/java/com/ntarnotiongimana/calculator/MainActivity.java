@@ -22,9 +22,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+
+        setContentView(R.layout.activity_main);
+
         solution = findViewById(R.id.solution);
         result = findViewById(R.id.result);
-
         assignId(clear,R.id.button_clear);
         assignId(button_bracket_open,R.id.button_bracket_open);
         assignId(button_bracket_close,R.id.button_bracket_close);
@@ -46,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         assignId(button9,R.id.button9);
         assignId(button_dot,R.id.button_dot);
 
-        setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -55,9 +56,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     void assignId(MaterialButton btn, int id){
-        MaterialButton button = findViewById(id);
-        if (button != null) {
-            button.setOnClickListener(this);
+        btn = findViewById(id);
+        if (btn != null) {
+            btn.setOnClickListener(this);
         }
     }
     @Override
@@ -65,5 +66,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         MaterialButton button =(MaterialButton) view;
         String buttonText = button.getText().toString();
         solution.setText(buttonText);
+
     }
 }
